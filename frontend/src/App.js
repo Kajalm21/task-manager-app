@@ -1,3 +1,4 @@
+/* global process */
 import React, { useState, useEffect } from 'react';
 import './App.css';
 
@@ -17,6 +18,11 @@ const App = () => {
       console.error('Fetch failed:', error);
     }
   };
+const API_URL = process.env.REACT_APP_API_URL;
+
+fetch(`${API_URL}/tasks`)
+  .then(response => response.json())
+  .then(data => console.log(data));
 
   useEffect(() => {
     fetchTasks();
